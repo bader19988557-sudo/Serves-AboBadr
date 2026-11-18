@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورشة أبو بدر | سجل السيارات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>ورشة أبو بدر</h1>
+            <p>نظام متابعة الأعطال وصيانة السيارات</p>
+            <span class="status-badge" id="saveIndicator">الحفظ التلقائي مفعل</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- نموذج الإضافة -->
+        <section class="card form-card">
+            <h2>تسجيل سيارة جديدة</h2>
+            <form id="carForm">
+                <div class="field-group">
+                    <label for="carType">نوع السيارة والموديل</label>
+                    <input type="text" id="carType" placeholder="مثال: BMW 750Li 2006" required>
+                </div>
+
+                <div class="field-group">
+                    <label for="problem">وصف المشكلة / الفحص أو البرمجة</label>
+                    <textarea id="problem" rows="3" placeholder="مثال: فحص كمبيوتر، برمجة مفتاح، تقطيع..." required></textarea>
+                </div>
+
+                <div class="field-group">
+                    <label for="status">حالة العمل الحالية</label>
+                    <select id="status">
+                        <option value="قيد العمل والفحص">قيد العمل والفحص</option>
+                        <option value="بانتظار قطع الغيار">بانتظار قطع الغيار</option>
+                        <option value="جاهزة للتسليم">جاهزة للتسليم</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">حفظ في السجل</button>
+            </form>
+        </section>
+
+        <!-- جدول العرض -->
+        <section class="card table-card">
+            <div class="table-header">
+                <h2>السيارات المسجلة (<span id="carCount">0</span>)</h2>
+                <input type="text" id="searchInput" placeholder="بحث سريع عن نوع السيارة أو العطل...">
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>نوع السيارة</th>
+                            <th>المشكلة / الصيانة</th>
+                            <th>التاريخ</th>
+                            <th>الحالة</th>
+                            <th>إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carsList">
+                        <!-- تظهر البيانات هنا -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer-actions">
+                <button class="btn-export" onclick="exportData()">تصدير السجل كملف نصي</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
